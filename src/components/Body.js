@@ -64,6 +64,7 @@ function Body() {
       <button className="top-rate-btn pointer" onClick={() => topRateHandler()}>
         Top Rated Restaurants
       </button>
+      <h1>smithuuu</h1>
 
       <div className="rest-cards-container">
         {filteredList.map((rest) => {
