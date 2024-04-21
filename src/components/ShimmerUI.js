@@ -6,9 +6,6 @@ const ShimmerUI = () => {
 
   return (
     <div className="body-container">
-      <input className="search-input" placeholder="Search for restaurant" type="text"></input>
-      <button className="top-rate-btn">search</button>
-      <button className="top-rate-btn">Top Rated Restaurants</button>
       <div className="shimmer-container">
         {nums.map((num) => {
           return (

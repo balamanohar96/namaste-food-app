@@ -5,7 +5,7 @@
   padding: 0px 100px;
   box-sizing: border-box;
   /* border: 1px solid green; */
-  box-shadow: 0px 1px 10px 5px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0px 1px 10px 5px rgba(0, 0, 0, 0.2); */
 }
 
 .logo {
@@ -46,7 +46,7 @@
 }
 
 .body-container {
-  padding: 0px 20px;
+  padding: 60px 20px;
 }
 
 .rest-cards-container {
@@ -61,7 +61,7 @@
   width: 180px;
   border-radius: 5px;
   background-color: rgb(250, 241, 242);
-  cursor: pointer;
+  
 }
 
 .rest-img-container {
@@ -93,9 +93,9 @@
   background-color: pink;
   color: black;
   border-radius: 5px;
-  padding: 10px;
+  /* padding: 10px; */
   border: 1px solid palevioletred;
-  margin: 20px 10px 0px 20px;
+  /* margin: 20px 10px 0px 20px; */
 }
 
 .shimmer-container {
@@ -150,7 +150,6 @@
 }
 .food-item-image {
   height: 150px;
-
   border-radius: 10px;
   margin-left: 100px;
 }
@@ -158,8 +157,3 @@
   text-align: center;
 }
 
-.class-child{
-  padding: 10px 40px;
-  border: 1px solid red;
-  margin: 10px;
-}

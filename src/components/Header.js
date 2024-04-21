@@ -6,36 +6,51 @@ import { Link } from "react-router-dom";
 function Header() {
   const [isLogin, setIsLogin] = useState(false);
   return (
-    <div className="header-container">
-      <img className="logo" alt="logo" src={LOGO_CDN}></img>
-      <ul className="nav-items">
+    <div className="flex justify-between px-24 shadow-lg">
+      <Link to="/">
+        <img className="h-24" alt="logo" src={LOGO_CDN}></img>
+      </Link>
+
+      <ul className="flex items-center">
         <li>
-          <Link className="nav-item" to="/">
+          <Link className="m-4 font-bold text-lg hover:[color:#ffa700]" to="/">
             Home
           </Link>
         </li>
         <li>
-          <Link className="nav-item" to="/about">
+          <Link
+            className="m-4 font-bold text-lg hover:[color:#ffa700]"
+            to="/about"
+          >
             About Us
           </Link>
         </li>
         <li>
-          <Link className="nav-item" to="/cart">
+          <Link
+            className="m-4 font-bold text-lg hover:[color:#ffa700]"
+            to="/cart"
+          >
             Cart
           </Link>
         </li>
         <li>
-          <Link className="nav-item" to="/contact">
+          <Link
+            className="m-4 font-bold text-lg hover:[color:#ffa700]"
+            to="/contact"
+          >
             Contact Us
           </Link>
         </li>
         <li>
-          <Link className="nav-item" to="/grocery">
+          <Link
+            className="m-4 font-bold text-lg hover:[color:#ffa700]"
+            to="/grocery"
+          >
             Grocery
           </Link>
         </li>
         <button
-          className="login-btn pointer"
+          className="m-4 w-12 font-bold text-lg hover:[color:#ffa700]"
           onClick={() => {
             setIsLogin(!isLogin);
           }}

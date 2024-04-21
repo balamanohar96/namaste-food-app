@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import ResCard from "./ResCard";
 import ShimmerUI from "./ShimmerUI";
-import { RESTAURANTS_API } from "../utils/constants";
+import { RESTAURANTS_API  } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -35,6 +35,7 @@ function Body() {
   const fetchData = async () => {
     const data = await fetch(RESTAURANTS_API);
     const json = await data.json();
+   // const parsedData=JSON.parse(json.contents);
     setRestList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -50,22 +51,28 @@ function Body() {
   return restList.length === 0 ? (
     <ShimmerUI />
   ) : (
-    <div className="body-container">
+    <div className="px-9 py-6">
       <input
         placeholder="Search for restaurants"
         value={searchInput}
         onChange={(e) => onChangeHandler(e)}
-        className="search-input"
+        className="border-2 rounded-md border-black ml-3 placeholder:italic h-8 w-56 outline-none py-4 px-4"
         type="text"
       ></input>
-      <button onClick={() => searchHandler()} className="top-rate-btn pointer">
+      <button
+        onClick={() => searchHandler()}
+        className="p-2 ml-2 bg-pink-200 rounded-md border-2 border-pink-200"
+      >
         search
       </button>
-      <button className="top-rate-btn pointer" onClick={() => topRateHandler()}>
+      <button
+        className="p-2 ml-4 bg-pink-200 rounded-md border-2 border-pink-200 "
+        onClick={() => topRateHandler()}
+      >
         Top Rated Restaurants
       </button>
 
-      <div className="rest-cards-container">
+      <div className="flex flex-wrap p-2">
         {filteredList.map((rest) => {
           return (
             <Link to={"/restaurant/" + rest.info.id} key={rest.info.id}>
