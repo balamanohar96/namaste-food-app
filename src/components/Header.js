@@ -1,10 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useContext } from "react";
 import { LOGO_CDN } from "../utils/constants";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 function Header() {
   const [isLogin, setIsLogin] = useState(false);
+  const { userName } = useContext(UserContext);
+
   return (
     <div className="flex justify-between px-24 shadow-lg">
       <Link to="/">
@@ -57,6 +59,11 @@ function Header() {
         >
           {isLogin ? "Logout" : "Login"}
         </button>
+        <li>
+          <Link className="m-4 font-bold text-lg hover:[color:#ffa700]">
+            {userName}
+          </Link>
+        </li>
       </ul>
     </div>
   );

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IMAGE_CDN } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 function ResCard(props) {
+  const { userName } = useContext(UserContext);
   const { restData } = props;
   const {
     name,
@@ -37,6 +39,7 @@ function ResCard(props) {
             : cusiniesString.slice(0, 25) + "..."}
         </p>
         <p className="text-stone-700">{areaName}</p>
+        <p className="font-bold text-stone-700">{userName}</p>
       </div>
     </div>
   );
