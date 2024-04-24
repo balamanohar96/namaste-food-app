@@ -52,6 +52,7 @@ function Body() {
     <ShimmerUI />
   ) : (
     <div className="px-9 py-6">
+      <h1>smith</h1>
       <input
         placeholder="Search for restaurants"
         value={searchInput}
