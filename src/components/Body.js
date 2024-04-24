@@ -56,7 +56,7 @@ function Body() {
         placeholder="Search for restaurants"
         value={searchInput}
         onChange={(e) => onChangeHandler(e)}
-        className="border-2 rounded-md border-black ml-3 placeholder:italic h-8 w-56 outline-none py-4 px-4"
+        className="border rounded-md border-black ml-3 placeholder:italic h-8 w-56 outline-none py-4 px-4"
         type="text"
       ></input>
       <button

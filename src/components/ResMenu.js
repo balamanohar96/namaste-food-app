@@ -55,7 +55,7 @@ function ResMenu() {
           {cuisines.join(", ")}
         </p>
 
-        <h5 className="my-1 ">{areaName}</h5>
+        <h5 className="my-1 ">outlet {areaName}</h5>
         <h5 className="font-bold">{sla.slaString.toLowerCase()}</h5>
       </div>
       <h3 className="text-center font-semibold my-8">M E N U</h3>

@@ -52,7 +52,7 @@ function Header() {
           </Link>
         </li>
         <button
-          className="m-4 w-12 font-bold text-lg hover:[color:#ffa700]"
+          className="m-4 w-16   font-bold text-lg hover:[color:#ffa700]"
           onClick={() => {
             setIsLogin(!isLogin);
           }}
@@ -60,8 +60,9 @@ function Header() {
           {isLogin ? "Logout" : "Login"}
         </button>
         <li>
-          <Link className="m-4 font-bold text-lg hover:[color:#ffa700]">
-            {userName}
+          <Link className="m-4 ml-2  font-bold text-lg leading-tight hover:[color:#ffa700]">
+            <p className="font-normal">user name :</p>
+            <p className="pl-1">{userName}</p>
           </Link>
         </li>
       </ul>
