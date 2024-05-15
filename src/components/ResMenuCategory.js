@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { IMAGE_CDN } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
-function ResMenuCategory({
-  eachCategoryObj,
-  showItemBoolean,
-  setShowItemFunc,
-}) {
+function ResMenuCategory({ eachCategoryObj }) {
+  const [showItemBoolean, setShowItemBoolean] = useState(true);
+  const dispatch = useDispatch();
+  const clickHandler = (item) => {
+    dispatch(addItem(item));
+  };
   return (
     <div className="font-sans border-b-8 p-4 my-4">
       {/* //! Accordian Header */}
       <div
-        onClick={() => setShowItemFunc()}
+        onClick={() => setShowItemBoolean(!showItemBoolean)}
         className="font-bold text-lg flex justify-between cursor-pointer "
       >
         <h4>
@@ -23,7 +26,7 @@ function ResMenuCategory({
       {showItemBoolean &&
         eachCategoryObj.itemCards.map((item) => {
           return (
-            <div key={item.card.info.id} className="my-8">
+            <div data-testid="foodItems" key={item.card.info.id} className="my-8">
               <div className="flex justify-between w-full  mb-8">
                 <div className="w-7/12">
                   <h3 className="font-semibold text-lg">
@@ -50,7 +53,14 @@ function ResMenuCategory({
                   </p>
                 </div>
                 <div className=" w-4/12  ">
-                  <button className="absolute bg-white text-md border-2 text-green-600 font-bold px-10 py-1 mt-32 ml-16 rounded-md ">
+                  <button
+                    className={
+                      item.card.info.imageId
+                        ? "absolute bg-white text-md border-2 text-green-600 font-bold px-10 py-1 mt-32 ml-16 rounded-md outline-none hover:bg-slate-100 "
+                        : "absolute bg-white text-md border-2 text-green-600 font-bold px-10 py-1 mt-11 ml-16 rounded-md outline-none hover:bg-slate-100 "
+                    }
+                    onClick={() => clickHandler(item)}
+                  >
                     ADD
                   </button>
                   <div className="w-8/12">

@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { IMAGE_CDN } from "../utils/constants";
-import UserContext from "../utils/UserContext";
+// import UserContext from "../utils/UserContext";
+// import { useContext } from "react";
 
 function ResCard(props) {
-  const { userName,  } = useContext(UserContext);
+  //const { userName,  } = useContext(UserContext);
   const { restData } = props;
   const {
     name,
@@ -16,7 +17,7 @@ function ResCard(props) {
   } = restData?.info;
   const cusiniesString = cuisines.join(", ");
   return (
-    <div className="w-56 m-3 mb-5 p-1 border-2 rounded-md hover:shadow-2xl bg-neutral-100">
+    <li className="w-56 m-3 mb-5 p-2  rounded-md hover:shadow-2xl hover:bg-white bg-neutral-100">
       <div className="h-36 rounded-lg truncate">
         <img
           alt="rest-pic"
@@ -25,8 +26,8 @@ function ResCard(props) {
         ></img>
       </div>
       <div className="p-2">
-        <h3 className="text-lg font-semibold font-sans">
-          {name?.length > 19 ? name.slice(0, 19) + "..." : name}
+        <h3 className="text-md font-semibold font-sans">
+          {name?.length > 21 ? name.slice(0, 21) + "..." : name}
         </h3>
         <h4 className=" font-semibold font-sans ">
           ☆ {avgRating} • {sla?.slaString}
@@ -34,14 +35,14 @@ function ResCard(props) {
         <p className="text-stone-700">{costForTwo}</p>
 
         <p className="text-stone-700">
-          {cusiniesString.length < 24
+          {cusiniesString.length < 23
             ? cusiniesString
-            : cusiniesString.slice(0, 24) + "..."}
+            : cusiniesString.slice(0, 23) + "..."}
         </p>
-        <p className="text-stone-700">{areaName}</p>
-        <p className="font-bold text-stone-700">user name : {userName}</p>
+        <p className="text-stone-700 font-semibold">{areaName}</p>
+        {/* <p className="font-bold text-stone-700">user name : {userName}</p> */}
       </div>
-    </div>
+    </li>
   );
 }
 

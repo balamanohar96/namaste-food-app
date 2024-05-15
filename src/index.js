@@ -39,7 +39,11 @@ const router = createBrowserRouter([
         path: "/grocery",
         element: (
           <Suspense
-            fallback={<h1 className="m-6 font-extrabold text-6xl">LOADING... GROCERY APP............</h1>}
+            fallback={
+              <h1 className="m-6 font-extrabold text-6xl">
+                LOADING... GROCERY APP............
+              </h1>
+            }
           >
             <Grocery />
           </Suspense>
@@ -54,10 +58,6 @@ const router = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+root.render(<RouterProvider router={router} />);
 
 reportWebVitals();

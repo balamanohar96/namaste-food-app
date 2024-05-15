@@ -2,13 +2,16 @@ import React, { useState, useContext } from "react";
 import { LOGO_CDN } from "../utils/constants";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [isLogin, setIsLogin] = useState(false);
   const { userName } = useContext(UserContext);
 
+  const noOfItemsInCart = useSelector((store) => store.cartSlice.quantity);
+
   return (
-    <div className="flex justify-between px-24 shadow-lg">
+    <div className="z-20 fixed top-0 bg-white w-screen flex justify-between px-24 shadow-lg  ">
       <Link to="/">
         <img className="h-24" alt="logo" src={LOGO_CDN}></img>
       </Link>
@@ -32,7 +35,7 @@ function Header() {
             className="m-4 font-bold text-lg hover:[color:#ffa700]"
             to="/cart"
           >
-            Cart
+            Cart (<span className="text-cyan-600">{noOfItemsInCart}</span>)
           </Link>
         </li>
         <li>
