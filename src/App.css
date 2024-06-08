@@ -120,14 +120,21 @@
 .shimmer-rest-name {
   height: 10px;
   width: 100px;
-  margin-top: 20px;
+  margin-top: 15px;
   background-color: #f0f0f0;
 }
 
 .shimmer-rest-rating {
   height: 10px;
   width: 150px;
-  margin-top: 20px;
+  margin-top: 15px;
+  background-color: #f0f0f0;
+}
+
+.shimmer-rest-area {
+  height: 10px;
+  width: 120px;
+  margin-top: 15px;
   background-color: #f0f0f0;
 }
 
@@ -135,7 +142,7 @@
   border: 1px solid pink;
   outline: 1px solid pink;
   padding: 5px;
-  height: 20px;
+  height: 15px;
   margin-left: 10px;
   border-radius: 5px;
   width: 200px;

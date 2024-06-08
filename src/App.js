@@ -5,6 +5,7 @@ import UserContext from "./utils/UserContext";
 import { useContext, useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Footer from "./components/Footer";
 
 function App() {
   const [updatedUserName, setUpdatedUserName] = useState("");
@@ -26,10 +27,14 @@ function App() {
           setUpdatedUserName,
         }}
       >
-        <Header  />
-        <p className="mb-24"></p>
-        <Outlet></Outlet>
-       
+        <div className="min-h-screen flex justify-between flex-col ">
+          <div>
+            <Header />
+            <p className="mb-16"></p>
+            <Outlet />
+          </div>
+          <Footer />
+        </div>
       </UserContext.Provider>
     </Provider>
   );

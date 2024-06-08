@@ -4,12 +4,13 @@ class About extends React.Component {
   constructor() {
     super();
     this.state = {
+      text: "About",
       count: 0,
     };
   }
   componentDidMount() {
     console.log("console from CDM");
-    this.timer=setInterval(() => {
+    this.timer = setInterval(() => {
       console.log("setinterval from CDM");
     }, 1000);
   }
@@ -26,22 +27,22 @@ class About extends React.Component {
     const clickHandler = () => {
       this.setState({
         count: this.state.count + 1,
-        message: "bala",
-        eroor: "nothing",
       });
     };
-
+    console.log(clickHandler);
     return (
-      <div>
-        <h1>About page</h1>
-        <h3>Count: {this.state.count}</h3>
-        <button
-          onClick={() => {
-            clickHandler();
-          }}
-        >
-          increse
-        </button>
+      <div className="p-8">
+        <h3 className="text-center font-bold text-xl text-orange-600">
+          {this.state.text} page
+        </h3>
+        <ul className="list-disc"></ul>
+        <li>This application is swiggy clone website.</li>
+        <li>
+          I have used swiggy's API to fetch list of restaurants and their respective
+          menu.
+        </li>
+        <li>This app is only for educational purpose.</li>
+        <li>I have used ReactJs, Redux toolkit, Tailwind CSS to built this application.</li>
       </div>
     );
   }

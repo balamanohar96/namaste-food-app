@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import ResMenuCategory from "./ResMenuCategory";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import Shimmer2 from "./Shimmer2";
 
 function ResMenu() {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
 
   if (resInfo === null) {
-    return <h1>loading..........</h1>;
+    return <Shimmer2/>;
   }
   const {
     name,
@@ -62,7 +63,7 @@ function ResMenu() {
       </div>
       <h3 className="text-center font-semibold my-8">M E N U</h3>
       {FilteredMenuCategories.length !== 0 ? (
-        <div className="p-4 border-t-8">
+        <div className="px-4 border-t-8">
           {FilteredMenuCategories.map((each, index) => (
             <ResMenuCategory key={index} eachCategoryObj={each} />
           ))}
