@@ -16,29 +16,29 @@ function Header() {
       </Link>
 
       <ul className="flex items-center">
-        <Link className="mx-4  font-bold  hover:[color:#ffa700]" to="/">
+        <Link className="mx-4  font-bold  text-lg hover:[color:#ffa700]" to="/">
           Home
         </Link>
 
-        <Link className="mx-4 font-bold  hover:[color:#ffa700]" to="/about">
+        <Link className="mx-4 font-bold  text-lg hover:[color:#ffa700]" to="/about">
           About
         </Link>
 
-        <Link className="mx-4 font-bold  hover:[color:#ffa700]" to="/grocery">
+        <Link className="mx-4 font-bold  text-lg hover:[color:#ffa700]" to="/grocery">
           Grocery
         </Link>
 
-        <Link className="mx-4 font-bold  hover:[color:#ffa700]" to="/contact">
+        <Link className="mx-4 font-bold  text-lg hover:[color:#ffa700]" to="/contact">
           Contact Us
         </Link>
 
-        <Link className="mx-4 font-bold  hover:[color:#ffa700]" to="/cart">
+        <Link className="mx-4 font-bold  text-lg hover:[color:#ffa700]" to="/cart">
           Cart [<span className="text-cyan-600">{noOfItemsInCart}</span>]
         </Link>
 
         <h2 className="mx-4 ml-2  font-bold  leading-tight">
-          <p className="font-normal">user name :</p>
-          <p className="pl-1  text-orange-400">{userName}</p>
+          <p className="font-normal">welcome</p>
+          <p className="  text-lg text-orange-400">{userName}</p>
         </h2>
       </ul>
     </div>

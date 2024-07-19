@@ -16,7 +16,9 @@ function Body() {
   }, [fetchedRestList]);
 
   const topRateHandler = () => {
-    const topRatedList = fetchedRestList.filter((rest) => rest.info.avgRating > 4.4);
+    const topRatedList = fetchedRestList.filter(
+      (rest) => rest.info.avgRating > 4.4
+    );
     setFilteredList(topRatedList);
   };
 
@@ -38,42 +40,40 @@ function Body() {
   return fetchedRestList.length === 0 ? (
     <ShimmerUI />
   ) : (
-    <div className="px-20 ">
-      <div className="py-4 bg-gry-300">
-        <div className="flex justify-between  mb-2">
-          <div className="border border-red-700 inline-flex rounded-lg  ml-7 overflow-hidden">
-            <input
-              placeholder="Search for restaurants"
-              value={searchInput}
-              onChange={(e) => onChangeHandler(e)}
-              className=" p-2    placeholder:italic h-full  outline-none "
-              type="text"
-            ></input>
-            <button
-              onClick={() => searchHandler()}
-              className="px-4 py-2  bg-red-700 font-semibold text-white"
-            >
-              search
-            </button>
-          </div>
-
+    <div className=" w-8/12 py-3 m-auto">
+      <div className=" my-2">
+        <div className="border border-red-700 inline-flex rounded-lg   overflow-hidden">
+          <input
+            placeholder="Search for restaurants"
+            value={searchInput}
+            onChange={(e) => onChangeHandler(e)}
+            className=" p-2    placeholder:italic h-full  outline-none "
+            type="text"
+          ></input>
           <button
-            className="p-2 mr-7 bg-red-700 font-semibold text-white rounded-lg border"
-            onClick={() => topRateHandler()}
+            onClick={() => searchHandler()}
+            className="px-4 py-2  bg-red-700 font-semibold text-white"
           >
-            Top Rated Restaurants
+            search
           </button>
         </div>
-       
-        <div className="flex flex-wrap justify-center">
-          {filteredList.map((rest) => {
-            return (
-              <Link to={"/restaurant/" + rest.info.id} key={rest.info.id}>
-                <ResCard restData={rest} />
-              </Link>
-            );
-          })}
-        </div>
+
+        <button
+          className="p-2 mx-5 bg-red-700 font-semibold text-white rounded-lg border"
+          onClick={() => topRateHandler()}
+        >
+          Top Rated Restaurants
+        </button>
+      </div>
+
+      <div className="flex flex-wrap gap-3">
+        {filteredList.map((rest) => {
+          return (
+            <Link to={"/restaurant/" + rest.info.id} key={rest.info.id}>
+              <ResCard restData={rest} />
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

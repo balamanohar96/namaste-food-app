@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 const Contact = () => {
   return (
     <div
-      className="w-1/2 mx-auto px-4 py-4 shadow-md mt-20"
+      className="w-1/2 mx-auto px-4 py-4 shadow-lg mt-20"
     >
       <div>
         <label className="font-semibold">Name : </label>
         <h2 className="inline-block font-semibold text-lg">
-          Bala Manohar Yeminedi
+          Bala Manohar
         </h2>
       </div>
       <div>
@@ -18,7 +18,13 @@ const Contact = () => {
         </h2>
       </div>
       <div>
-        <label className="font-semibold">Linkedin Profile: </label>
+        <label className="font-semibold">Phone : </label>
+        <h2 className="inline-block font-semibold text-lg">
+          8754539642
+        </h2>
+      </div>
+      <div>
+        <label className="font-semibold">LinkedIn Profile: </label>
         <h2 className="inline-block font-semibold  mt-2">
           <Link
             className="border px-2 py-1 bg-lime-500 text-white rounded-md"

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 
 function ResMenuCategory({ eachCategoryObj }) {
-  const [showItemBoolean, setShowItemBoolean] = useState(true);
+  const [showItemBoolean, setShowItemBoolean] = useState(false);
   const dispatch = useDispatch();
   const clickHandler = (item) => {
     dispatch(
@@ -24,7 +24,21 @@ function ResMenuCategory({ eachCategoryObj }) {
         <h4 className="text-lg text-red-500">
           {eachCategoryObj.title} ({eachCategoryObj.itemCards.length})
         </h4>
-        <h4 className="text-base text-red-500 ">⌄</h4>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="size-6 text-base text-red-500"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+          />
+        </svg>
       </div>
 
       {/* //! Accordian Body */}
@@ -38,41 +52,51 @@ function ResMenuCategory({ eachCategoryObj }) {
             >
               <div className="flex justify-between items-center  w-full px-3 mb-8">
                 <div className="w-8/12 ">
-                  <h3 className="font-semibold text-base m-0">
+                  <h3 className="font-semibold m-0">
                     {item.card.info.name}
                   </h3>
-                  <h4 className="font-semibold">
-                    ₹
+                  <h4 className="font-semibold text-sm m-0">
+                    ₹ {}
                     {item.card.info.defaultPrice / 100 ||
                       item.card.info.price / 100}
                   </h4>
 
                   {item.card.info.ratings.aggregatedRating.ratingCountV2 && (
-                    <p className="my-1 text-sm">
-                      ★
+                    <p className="my-1 text-sm flex gap-1 items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="rgb(90, 180, 90)"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="size-6 text-green-500 inline w-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
+                        />
+                      </svg>
                       <span className="font-semibold">
+                        {" "}
                         {item.card.info.ratings.aggregatedRating.rating}
                       </span>{" "}
                       ({item.card.info.ratings.aggregatedRating.ratingCountV2})
                     </p>
                   )}
 
-                  <p className="text-slate-500 py-2">
+                  <p className="text-slate-500 text-sm py-2">
                     {item.card.info.description}
                   </p>
                 </div>
-                <div className=" w-4/12  flex ">
+                <div className=" w-4/12  flex  relative">
                   <button
-                    className={
-                      item.card.info.imageId
-                        ? "absolute bg-white text-md border-2 text-green-600 shadow-lg font-bold px-10 py-1 mt-28 ml-24 rounded-md outline-none hover:bg-slate-100 "
-                        : "absolute bg-white text-md border-2 text-green-600 shadow-lg font-bold px-10 py-1 mt-2 ml-24 rounded-md outline-none hover:bg-slate-100 "
-                    }
+                    className="absolute bg-white text-md border-2 text-green-600 shadow-lg font-bold px-10 py-1 -bottom-3 right-9 rounded-md outline-none hover:bg-gray-200 "
                     onClick={() => clickHandler(item)}
                   >
                     ADD
                   </button>
-                  <div className="w-4/12"> </div>
+                  <div className="w-4/12 "> </div>
                   <div className="w-8/12 ">
                     {item.card.info.imageId && (
                       <img
