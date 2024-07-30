@@ -10,37 +10,54 @@ function Header() {
   const noOfItemsInCart = useSelector((store) => store.cartSlice.quantity);
 
   return (
-    <div className="z-10 fixed top-0 bg-white w-screen items-center flex justify-between px-24 py-0 shadow-lg  ">
-      <Link to="/">
-        <img className="h-16" alt="logo" src={LOGO_CDN}></img>
-      </Link>
+    <div className="z-10 fixed top-0 bg-white w-screen md:items-center flex md:flex-row flex-col  justify-between md:px-24 py-0 shadow-lg  ">
+      <div className="flex justify-between sm:hidden lg:block">
+        <Link className="" to="/">
+          <img className="h-16" alt="logo" src={LOGO_CDN}></img>
+        </Link>
+      </div>
 
-      <ul className="flex items-center">
-        <Link className="mx-4  font-bold  text-lg hover:[color:#ffa700]" to="/">
+      <div className="flex md:flex-row justify-between p-2  md:items-center">
+        <Link
+          className="md:mx-4  font-bold  md:text-lg hover:[color:#ffa700]"
+          to="/"
+        >
           Home
         </Link>
 
-        <Link className="mx-4 font-bold  text-lg hover:[color:#ffa700]" to="/about">
+        <Link
+          className="md:mx-4  font-bold  md:text-lg hover:[color:#ffa700]"
+          to="/about"
+        >
           About
         </Link>
 
-        <Link className="mx-4 font-bold  text-lg hover:[color:#ffa700]" to="/grocery">
+        <Link
+          className="md:mx-4 font-bold  md:text-lg hover:[color:#ffa700]"
+          to="/grocery"
+        >
           Grocery
         </Link>
 
-        <Link className="mx-4 font-bold  text-lg hover:[color:#ffa700]" to="/contact">
+        <Link
+          className="md:mx-4 font-bold whitespace-nowrap md:text-lg hover:[color:#ffa700]"
+          to="/contact"
+        >
           Contact Us
         </Link>
 
-        <Link className="mx-4 font-bold  text-lg hover:[color:#ffa700]" to="/cart">
+        <Link
+          className="md:mx-4 font-bold whitespace-nowrap  md:text-lg hover:[color:#ffa700]"
+          to="/cart"
+        >
           Cart [<span className="text-cyan-600">{noOfItemsInCart}</span>]
         </Link>
 
-        <h2 className="mx-4 ml-2  font-bold  leading-tight">
+        <div className="mx-4 ml-2 hidden md:block font-bold  leading-tight">
           <p className="font-normal">welcome</p>
           <p className="  text-lg text-orange-400">{userName}</p>
-        </h2>
-      </ul>
+        </div>
+      </div>
     </div>
   );
 }

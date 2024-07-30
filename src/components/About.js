@@ -31,18 +31,21 @@ class About extends React.Component {
     };
     console.log(clickHandler);
     return (
-      <div className="p-8">
+      <div className="py-12 px-5 md:p-6">
         <h3 className="text-center font-bold text-xl text-orange-600">
           {this.state.text} page
         </h3>
         <ul className="list-disc"></ul>
         <li>This application is swiggy clone website.</li>
         <li>
-          I have used swiggy's API to fetch list of restaurants and their respective
-          menu.
+          I have used swiggy's API to fetch list of restaurants and their
+          respective menu.
         </li>
         <li>This app is only for educational purpose.</li>
-        <li>I have used ReactJs, Redux toolkit, Tailwind CSS to built this application.</li>
+        <li>
+          I have used ReactJs, Redux toolkit, Tailwind CSS to built this
+          application.
+        </li>
       </div>
     );
   }

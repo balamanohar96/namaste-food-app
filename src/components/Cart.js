@@ -1,5 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../utils/cartSlice";
+import {
+  clearCart,
+  decreaseItemQuantity,
+  increaseItemQuantity,
+  removeItem,
+} from "../utils/cartSlice";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { foodItemsArr, quantity } = useSelector((store) => store.cartSlice);
@@ -8,66 +14,91 @@ const Cart = () => {
     dispatch(clearCart());
   };
 
+  // for total cost of all items in the cart
   let cartTotal = 0;
   for (let i = 0; i < foodItemsArr.length; i++) {
-    const itemCost = Math.round(foodItemsArr[i][1]);
+    const itemCost =
+      Math.round(foodItemsArr[i].itemPrice) * foodItemsArr[i].quantity;
     cartTotal = cartTotal + itemCost;
   }
 
-  const itemsAndQuantitiesObj = {};
-  for (const item of foodItemsArr) {
-    if (itemsAndQuantitiesObj[item[0]]) {
-      itemsAndQuantitiesObj[item[0]] += 1;
-    } else {
-      itemsAndQuantitiesObj[item[0]] = 1;
-    }
-  }
+  const tenPercentDiscount =
+    Math.round(cartTotal * 0.1) <= 150 ? Math.round(cartTotal * 0.1) : 150;
 
-  const billingDetails = [];
-  for (const [item, quantity] of Object.entries(itemsAndQuantitiesObj)) {
-    const itemIndex = foodItemsArr.findIndex((each) => each[0] === item);
-    const price = foodItemsArr[itemIndex][1];
-    const details = [item, quantity, price];
-    billingDetails.push(details);
-  }
+  const decreaseBtnHandler = (index, item) => {
+    if (item.quantity === 1) {
+      dispatch(removeItem(index));
+    } else {
+      dispatch(decreaseItemQuantity(index));
+    }
+  };
 
   return (
-    <div className="px-8  py-6">
+    <div className=" py-16 md:px-8  md:py-6">
       {foodItemsArr.length !== 0 && (
         <button
           onClick={clickHandler}
-          className="border bg-orange-500 text-white px-4 py-2 ml-4 rounded-md outline-none hover:bg-orange-600"
+          className="border bg-orange-500 text-white px-4 py-2  ml-4 rounded-md outline-none hover:bg-orange-600"
         >
           Clear Cart
         </button>
       )}
 
-      <div className=" rounded-md mt-3">
+      <div className=" rounded-md mt-6">
         {foodItemsArr.length === 0 ? (
           <div className="text-center  ">
             <h1 className="font-bold text-xl mb-3">Your cart is empty</h1>
-            <p>You can go to home page to view more restaurants</p>
+            <p>
+              You can go to{" "}
+              <Link
+                className="border-b-2 border-red-400 text-red-400 font-bold"
+                to="/"
+              >
+                Home
+              </Link>{" "}
+              page to view more restaurants
+            </p>
           </div>
         ) : (
-          <div className="flex">
-            <div className="w-1/2 m-2 px-4 ">
-              {billingDetails.map((each, i) => (
-                <div key={i} className="flex justify-between ">
-                  <h3 className=" text-md w-3/5">{each[0]}</h3>
+          <div className="flex flex-col md:flex-row">
+            <div className="md:w-1/2  px-4 ">
+              {foodItemsArr.map((each, i) => (
+                <div
+                  key={i}
+                  className="flex justify-between bg-slate-200 mt-2 p-2 rounded-md "
+                >
+                  <h3 className=" text-md w-3/5">{each.itemName}</h3>
+                  <h3>Rs. {each.itemPrice}</h3>
                   <h3>
-                    {Math.round(each[2])} x {each[1]}
+                    <button
+                      className="bg-red-400 w-7 rounded"
+                      onClick={() => decreaseBtnHandler(i, each)}
+                    >
+                      -
+                    </button>
+                    <span className="p-2">{Math.round(each.quantity)}</span>
+                    <button
+                      className="bg-green-500 w-7 rounded pb-1"
+                      onClick={() => dispatch(increaseItemQuantity(i))}
+                    >
+                      +
+                    </button>
                   </h3>
+
                   <h4 className="font-bold">
-                    Rs. {Math.round(each[2]) * each[1]}
+                    Rs.{" "}
+                    {(
+                      Math.round(each.quantity) * each.itemPrice
+                    ).toLocaleString()}
                   </h4>
                 </div>
               ))}
-              <div className="flex  justify-between border-t-2 pt-2 mt-2 font-bold">
+              <div className="flex  justify-between border-t-2 p-2 mt-2 font-bold">
                 <h2>Total</h2>
-                <p>Rs. {cartTotal}</p>
+                <p>Rs. {cartTotal.toLocaleString()}</p>
               </div>
             </div>
-            <div className="w-1/2 px-8">
+            <div className="md:w-1/2 px-4">
               <div className="p-2">
                 <div className="flex justify-between">
                   <h2 className="font-bold text-xl">Order Summary</h2>
@@ -75,7 +106,7 @@ const Cart = () => {
                 </div>
 
                 <p className="text-sm font-semibold text-green-600">
-                  Overall Savings ₹ 49
+                  Overall Savings ₹ {tenPercentDiscount}
                 </p>
               </div>
               <hr></hr>
@@ -83,23 +114,27 @@ const Cart = () => {
               <div className="p-2 text-sm">
                 <div className="flex justify-between">
                   <h2>Order Value</h2>
-                  <p className="font-bold">₹ {cartTotal}</p>
+                  <p className="font-bold">₹ {cartTotal.toLocaleString()}</p>
                 </div>
 
                 <div className="flex justify-between mt-1">
                   <h2>Delivery fee</h2>
-                  <p className=" font-semibold">49</p>
+                  <p className=" font-semibold">₹ 49</p>
                 </div>
 
                 <div className="flex justify-between mt-1">
                   <h2>Product Discount</h2>
-                  <p className="font-bold  text-green-600">- ₹ 49</p>
+                  <p className="font-bold  text-green-600">
+                    - ₹ {tenPercentDiscount}
+                  </p>
                 </div>
               </div>
               <hr></hr>
               <div className="flex justify-between py-2 mt-2 font-bold text-xl">
                 <h2>Grand Total</h2>
-                <p>₹ {cartTotal}</p>
+                <p>
+                  ₹ {(cartTotal + 49 - tenPercentDiscount).toLocaleString()}
+                </p>
               </div>
 
               <button className=" w-full font-bold rounded-sm bg-orange-500 hover:bg-orange-600 text-sm text-white py-2">

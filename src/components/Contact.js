@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
+    <>
     <div
-      className="w-1/2 mx-auto px-4 py-4 shadow-lg mt-20"
+      className="py-12 px-5  md:w-1/2 mx-auto md:p-4 shadow-lg mt-20"
     >
       <div>
         <label className="font-semibold">Name : </label>
@@ -48,6 +49,7 @@ const Contact = () => {
         </h2>
       </div>
     </div>
+    </>
   );
 };
 

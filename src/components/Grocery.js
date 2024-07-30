@@ -1,6 +1,6 @@
 const Grocery = () => {
   return (
-    <div className="p-8">
+    <div className="py-12 px-5 md:p-6">
       <h1 className="text-center font-bold text-xl text-orange-600">
         Grocery page
       </h1>

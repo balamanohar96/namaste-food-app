@@ -41,13 +41,13 @@ function Body() {
     <ShimmerUI />
   ) : (
     <div className=" w-8/12 py-3 m-auto">
-      <div className=" my-2">
+      <div className="mt-11 md:my-2">
         <div className="border border-red-700 inline-flex rounded-lg   overflow-hidden">
           <input
             placeholder="Search for restaurants"
             value={searchInput}
             onChange={(e) => onChangeHandler(e)}
-            className=" p-2    placeholder:italic h-full  outline-none "
+            className=" p-2 w-full   placeholder:italic h-full  outline-none "
             type="text"
           ></input>
           <button
@@ -59,7 +59,7 @@ function Body() {
         </div>
 
         <button
-          className="p-2 mx-5 bg-red-700 font-semibold text-white rounded-lg border"
+          className="p-2 mt-3 md:mt-0 md:mx-5 bg-red-700 font-semibold text-white rounded-lg border"
           onClick={() => topRateHandler()}
         >
           Top Rated Restaurants

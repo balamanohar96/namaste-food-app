@@ -2,7 +2,7 @@ import React from "react";
 
 function Shimmer2() {
   return (
-    <div className="py-20 w-1/2 m-auto">
+    <div className="py-20 p-4 md:w-1/2 m-auto">
       <div className="w-40 h-3  bg-slate-100 mb-2"></div>
       <div className="flex gap-3 ">
         {/* start */}
@@ -20,7 +20,7 @@ function Shimmer2() {
           </div>
         </div>
         {/* end */}
-        <div className="mr-4">
+        <div className="hidden md:block mr-4">
           <div className="w-80 h-52  bg-slate-200 my-4"></div>
           <div className="w-40 h-2  bg-slate-100 mb-2"></div>
           <div className="flex justify-between">

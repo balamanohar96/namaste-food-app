@@ -6,12 +6,14 @@ import { addItem } from "../utils/cartSlice";
 function ResMenuCategory({ eachCategoryObj }) {
   const [showItemBoolean, setShowItemBoolean] = useState(false);
   const dispatch = useDispatch();
-  const clickHandler = (item) => {
+  const clickHandler = (info) => {
     dispatch(
-      addItem([
-        item.card.info.name,
-        item.card.info.defaultPrice / 100 || item.card.info.price / 100,
-      ])
+      addItem({
+        id: info.id,
+        itemName: info.name,
+        itemPrice: info.defaultPrice / 100 || info.price / 100,
+        quantity: 1,
+      })
     );
   };
   return (
@@ -50,11 +52,9 @@ function ResMenuCategory({ eachCategoryObj }) {
               key={item.card.info.id}
               className="my-3 "
             >
-              <div className="flex justify-between items-center  w-full px-3 mb-8">
-                <div className="w-8/12 ">
-                  <h3 className="font-semibold m-0">
-                    {item.card.info.name}
-                  </h3>
+              <div className="md:flex justify-between items-center  w-full px-3 mb-8">
+                <div className=" md:w-8/12 ">
+                  <h3 className="font-semibold m-0">{item.card.info.name}</h3>
                   <h4 className="font-semibold text-sm m-0">
                     ₹ {}
                     {item.card.info.defaultPrice / 100 ||
@@ -91,12 +91,13 @@ function ResMenuCategory({ eachCategoryObj }) {
                 </div>
                 <div className=" w-4/12  flex  relative">
                   <button
-                    className="absolute bg-white text-md border-2 text-green-600 shadow-lg font-bold px-10 py-1 -bottom-3 right-9 rounded-md outline-none hover:bg-gray-200 "
-                    onClick={() => clickHandler(item)}
+                    className="add-btn absolute bg-white text-md border-2 text-green-600 shadow-lg font-bold px-3 md:px-5 py-1 -bottom-3  md:right-14 rounded-md outline-none hover:bg-gray-200 "
+                    onClick={() => clickHandler(item.card.info)}
                   >
                     ADD
                   </button>
-                  <div className="w-4/12 "> </div>
+                  {/* //jrhruhyuryyr */}
+                  <div className="hidden md:block w-4/12  "> </div>
                   <div className="w-8/12 ">
                     {item.card.info.imageId && (
                       <img

@@ -46,9 +46,9 @@ function ResMenu() {
   }
 
   return (
-    <div className="w-8/12 mx-auto py-1">
+    <div className=" w-11/12 md:w-8/12 mx-auto py-5 md:py-1">
       <h1 className="font-bold font-sans mt-8 text-2xl">{name}</h1>
-      <div className="p-4 my-6 rounded-xl border-2 shadow-lg">
+      <div className="p-4 my-2 md:my-6 rounded-xl border-2 shadow-lg">
         <h4 className="text-md font-semibold font-sans">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ function ResMenu() {
         </h5>
         <h5 className="font-bold">{sla.slaString.toLowerCase()}</h5>
       </div>
-      <h3 className="text-center font-semibold my-8">M E N U</h3>
+      <h3 className="text-center font-semibold my-4 md:my-8">M E N U</h3>
       {FilteredMenuCategories.length !== 0 ? (
         <div className="px-4 border-t-8">
           {FilteredMenuCategories.map((each, index) => (
