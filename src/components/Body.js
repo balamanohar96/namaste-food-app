@@ -17,7 +17,7 @@ function Body() {
 
   const topRateHandler = () => {
     const topRatedList = fetchedRestList.filter(
-      (rest) => rest.info.avgRating > 4.4
+      (rest) => rest.info.avgRating > 4.3
     );
     setFilteredList(topRatedList);
   };
